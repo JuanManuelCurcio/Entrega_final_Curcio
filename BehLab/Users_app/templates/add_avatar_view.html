@@ -1,0 +1,13 @@
+{% extends 'main.html' %}
+
+{% block gap %}
+<br>
+
+<form action="{% url 'add_avatar_view' %}" enctype="multipart/form-data" method="post"> {% csrf_token %} <!-- PARA ENVIAR ARCHIVOS EL ENC-->
+
+    {{form.as_p}}
+<button type="submit"> Cargar imagen </button>
+</form>
+
+
+{% endblock gap %}

@@ -15,8 +15,19 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from .views import main
+from django.conf.urls.static import static
+from django.conf import settings
+from .views import no_access_view
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
+    path('admin/', admin.site.urls),
+    path('users/', include('Users_app.urls')),  # Incluye las URLs de Users_app
+    path('BehLabTools/', include('BehLabTools.urls')),
+    path('', main, name='main'),
+    path('no_access_view/', no_access_view, name='no_access_view')
 ]
+
+#if settings.DEBUG:
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

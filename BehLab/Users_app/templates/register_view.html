@@ -1,0 +1,14 @@
+{% extends 'main.html' %}
+
+{% block gap %}
+<br>
+<form action="{% url 'register_view' %}" method="post"> {% csrf_token %} <!-- Token de seguridad que pide djaneiro -->
+
+    {{form.as_p}}
+
+    <button type = "submit"> Registrarse </button>
+
+</form>
+
+
+{% endblock gap %}
