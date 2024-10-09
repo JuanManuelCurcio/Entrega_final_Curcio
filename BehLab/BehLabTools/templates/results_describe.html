@@ -1,0 +1,19 @@
+{% extends 'main.html' %}
+
+{% block gap %}
+  <h2>Resultado del Análisis</h2>
+  <div class = "table">
+    <table>
+    {{results|safe}} <!-- Permite que el contenido se renderice tal como esta sin ajuste html sino renderiza el codigo python -->
+    </table>
+    <br>
+    <a href="{% url 'load_csv_describe_view' %}" class="btn btn-primary">Cargar otro archivo</a>
+    <a href="{% url 'BehLabTools_view' %}" class="btn btn-primary">Atras</a>
+  </div>
+  <h2>Contenido Data Frame</h2>
+  <div class = "table">
+    <table>
+    {{ csv_file|safe }}  <!-- Esto renderiza el contenido del DataFrame -->
+    </table>
+  </div>
+{% endblock %}

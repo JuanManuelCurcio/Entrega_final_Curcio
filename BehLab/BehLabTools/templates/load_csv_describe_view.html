@@ -1,0 +1,9 @@
+{% extends 'main.html' %}
+
+{% block gap %}
+  <h2>Cargar archivo CSV</h2>
+  <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Cargar archivo y analizar</button>
+  </form>
+{% endblock %}
