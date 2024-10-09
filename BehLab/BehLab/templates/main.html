@@ -8,6 +8,11 @@
     <meta name="author" content="" />
     <title>BeLab</title>
     <!-- Favicon-->
+    <style>
+        table {border-collapse: collapse; width: 40%; margin: 20px 0;justify-content: center;}
+        th, td {border: 1px solid black;padding: 5px;text-align: center;}
+        th{background-color: #f2f2f2; font-weight: bold; text-align: center;padding: 5px;}
+    </style>
     <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
@@ -38,16 +43,13 @@
                     <a class="btn btn-primary" href="{% url 'register_view' %}">Registrarse</a>
                     <a class="btn btn-primary" href="{% url 'login_view' %}">Iniciar sesión</a>
                     {% endif %}
-
-
-
                 </ul>
             </div>
         </div>
     </nav>
 
     <!-- Page Content-->
-    <div class="container" style="min-height: calc(110vh - 200px);"> <!-- Ajusta la altura mínima -->
+    <div class="container" style="min-height: calc(110vh - 200px);">
         {% block gap %}
         {% endblock gap %}
     </div>
