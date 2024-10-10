@@ -5,6 +5,19 @@ from django.shortcuts import redirect
 from .models import * 
 from .forms import *
 
+
+# AUTORIZACION USUARIO
+
+def forum_view_access(req):
+    if req.user.is_authenticated:
+        return render(req, "forum_view.html", {})
+    else:
+        return redirect('no_access_view')
+    
+
+
+# FORO
+
 def forum_view(req):
     forums=forum.objects.all()
     count=forums.count()

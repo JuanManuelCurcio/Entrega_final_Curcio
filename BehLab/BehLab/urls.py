@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from .views import main
+from .views import index
 from django.conf.urls.static import static
 from django.conf import settings
 from .views import no_access_view
@@ -26,7 +26,7 @@ urlpatterns = [
     path('users/', include('Users_app.urls')),  # Incluye las URLs de Users_app
     path('BehLabTools/', include('BehLabTools.urls')),
     path('Forum/', include('Forum.urls')),
-    path('', main, name='main'),
+    path('', index, name='index'),
     path('no_access_view/', no_access_view, name='no_access_view')
 ]
 
