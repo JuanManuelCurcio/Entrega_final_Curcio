@@ -25,6 +25,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('users/', include('Users_app.urls')),  # Incluye las URLs de Users_app
     path('BehLabTools/', include('BehLabTools.urls')),
+    path('Forum/', include('Forum.urls')),
     path('', main, name='main'),
     path('no_access_view/', no_access_view, name='no_access_view')
 ]

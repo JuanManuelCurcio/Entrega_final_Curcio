@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "Users_app",
     "BehLabTools",
+    "Forum",
 ]
 
 MIDDLEWARE = [
