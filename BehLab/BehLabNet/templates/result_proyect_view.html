@@ -1,0 +1,20 @@
+{% extends 'main.html' %}
+
+{% block gap %}
+
+
+<h1>Resultados de la busqueda para: "{{ name_proyect }}"</h1>
+
+{% if proyectos %}
+    <ul>
+        {% for proyect in proyects %}
+            <li>
+                <h2>Titulo del Proyecto: {{ proyect.name_proyect }}</h2>
+                <p>Descripción: {{ proyect.brief_description }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No se encontraron proyectos con ese nombre.</p>
+{% endif %}
+{% endblock gap %}

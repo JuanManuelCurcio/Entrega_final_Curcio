@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "Users_app",
     "BehLabTools",
     "Forum",
+    "BehLabNet",
 ]
 
 MIDDLEWARE = [
