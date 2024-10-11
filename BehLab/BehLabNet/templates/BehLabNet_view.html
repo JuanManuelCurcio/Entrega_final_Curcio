@@ -1,7 +1,7 @@
 {% extends 'main.html' %}
 {% block gap %}
 <br>
-<a class="navbar-brand" href="{% url 'search_proyect_view' %}" style="margin-left: 20px;">Buscar proyecto</a>
-<a class="navbar-brand" href="{% url 'add_proyect_view' %}" style="margin-left: 20px;">Agregar proyecto</a>
+<a class="btn btn-primary" href="{% url 'search_proyect_view' %}" style="margin-left: 20px;">Buscar proyecto</a>
+<a class="btn btn-primary" href="{% url 'NewProyectForm_view' %}" style="margin-left: 20px;">Agregar proyecto</a>
 <br>
 {% endblock gap %}

@@ -2,19 +2,20 @@
 
 {% block gap %}
 
+<h1>Resultados de la búsqueda para: "{{ key_words }}"</h1>
 
-<h1>Resultados de la busqueda para: "{{ name_proyect }}"</h1>
-
-{% if proyectos %}
+{% if proyects %}
     <ul>
         {% for proyect in proyects %}
             <li>
-                <h2>Titulo del Proyecto: {{ proyect.name_proyect }}</h2>
+                <h2>Título del Proyecto: {{ proyect.name_proyect }}</h2>
+                <h3>Usuario: {{ proyect.user.username }}</h3>
+                <h3>Correo Electrónico: {{ proyect.user.email }}</h3>
                 <p>Descripción: {{ proyect.brief_description }}</p>
             </li>
         {% endfor %}
     </ul>
 {% else %}
-    <p>No se encontraron proyectos con ese nombre.</p>
+    <p>No se encontraron proyectos con esas palabras.</p>
 {% endif %}
 {% endblock gap %}

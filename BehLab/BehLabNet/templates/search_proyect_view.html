@@ -3,8 +3,16 @@
 {% block gap %}
 <br>
 <form action="{% url 'result_proyect_view' %}" method="get">
-<p> Titulo del proyecto: <input type="text" name="nombre_proyecto"></p>
+    <label for="user">Usuario:</label>
+    <input type="text" id="user" name="user" placeholder="Usuario">
+<br>
+    <label for="name_proyect">Nombre del Proyecto:</label>
+    <input type="text" id="name_proyect" name="name_proyect" placeholder="Nombre del Proyecto">
+<br>
+    <label for="key_words">Palabras clave:</label>
+    <input type="text" id="key_words" name="key_words" placeholder="Ejemplo: mente, aprendizaje, estudiantes">
+<br>
     
-<button type="submit">Buscar</button>
-
+    <button type="submit">Buscar</button>
+</form>
 {% endblock gap %}
