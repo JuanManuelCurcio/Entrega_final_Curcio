@@ -49,7 +49,7 @@ def load_csv_mcorr_view(req):
             mcorr = df.corr(method='pearson').round(2)
 
             plt.figure(figsize=(12, 10))
-            graf = sns.heatmap(df.corr('pearson'), annot=True, cmap='magma',annot_kws={"size": 20})
+            graf = sns.heatmap(df.corr('pearson').round(2), annot=True, cmap='magma',annot_kws={"size": 20})
             graf.set_xticklabels(graf.get_xticklabels(), rotation=45, fontsize=14)
             graf.set_yticklabels(graf.get_yticklabels(), rotation=0, fontsize=14)
             plot_dir = os.path.join(settings.MEDIA_ROOT, 'plots') # esto me conviene me parece rearlo en algun la do como fijo como el media root

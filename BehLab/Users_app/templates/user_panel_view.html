@@ -1,0 +1,8 @@
+{% extends 'main.html' %}
+{% block gap %}
+<br>
+<a class="btn btn-primary" href="{% url 'edit_user_view' %}" style="margin-left: 20px;">Editar usuario</a>
+<a class="btn btn-primary" href="{% url 'add_avatar_view' %}" style="margin-left: 20px;">Editar avatar</a>
+<a class="btn btn-primary" href="{% url 'user_proyects_view' %}" style="margin-left: 20px;">Proyectos</a>
+<br>
+{% endblock gap %}

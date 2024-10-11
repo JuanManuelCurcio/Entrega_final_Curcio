@@ -41,7 +41,7 @@
                     
                     <form action="{% url 'logout_view' %}" method="post"> {% csrf_token %}
                         <button type="submit" class="btn btn-primary">Cerrar sesión</button>
-                        <a class="btn btn-primary" href="{% url 'edit_user_view' %}">Editar usuario</a>
+                        <a class="btn btn-primary" href="{% url 'user_panel_view' %}">Panel de usuario</a>
                         <a class="btn btn-primary" href="{% url 'add_avatar_view' %}">Agregar Avatar</a>
                     </form>
                 

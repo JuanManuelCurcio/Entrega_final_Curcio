@@ -1,0 +1,12 @@
+{% extends 'main.html' %}
+
+{% block gap %}
+<br>
+<form action="{% url 'delete_proyects_view' proyect.id %}" method="post"> 
+    {% csrf_token %} <!-- Token de seguridad que pide Django -->
+
+    <button type="submit">Estas seguro? ELIMINAR</button>
+    <a href="{% url 'user_proyects_view' %}" class="btn btn-secondary">Cancelar</a> <!-- Enlace a la vista de proyectos -->
+
+</form>
+{% endblock gap %}

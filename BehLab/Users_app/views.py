@@ -4,19 +4,60 @@ from django.contrib.auth.forms import AuthenticationForm
 from .forms import UserEditForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
+from BehLabNet.models import Proyects
 from .models import Avatar
 from .forms import AvatarForm
 import os
 from django.contrib.auth import logout
 from django.shortcuts import redirect
+from django.views.generic.edit import DeleteView, UpdateView
+from django.views.generic.detail import DetailView
+from BehLabNet.forms import NewProyectForm
+from django import forms
 
 # Create your views here.
+
+def user_panel_view(req):
+    return render(req, "user_panel_view.html", {})
+
+def user_panel_view(req):
+    return render(req, "user_panel_view.html", {})
+
+def user_proyects_view(req):
+    proyects = Proyects.objects.filter(user=req.user)  
+    return render(req, "user_proyects_view.html", {
+        'proyects': proyects,  
+        'user_name': req.user.username 
+    })
+
+# CRUD
+class ProyectDelete(DeleteView):
+    model = Proyects
+    template_name = 'delete_proyects_view.html'
+    success_url = '/users/user_proyects_view'
+    context_object_name = 'proyect'
+
+class ProyectDetail(DetailView): 
+    model = Proyects 
+    template_name = 'detail_proyects_view.html'
+    context_object_name = 'proyect'
+
+class ProyectUpdate(UpdateView):
+    model = Proyects
+    form_class = NewProyectForm  # Usa el formulario que definiste
+    template_name = 'update_proyects_view.html'
+    success_url = '/users/user_proyects_view'
+    context_object_name = 'proyect'
+
+
+# NEW PROYECT (NewProyectForm_view) esta en la app BehLabNet, fue por un cambio de estrategia que hice luego sobre como crear los proyectos
 
 
 # LOG-IN
 
 def login_view(req):
     form = AuthenticationForm(req, data=req.POST)
+    
 
     if req.method == 'POST':
         if form.is_valid():
@@ -49,10 +90,10 @@ def register_view(req):
     if req.method == 'POST':
         form = UserCreationForm(req.POST)
         if form.is_valid():
-            data = form.cleaned_data # 1- data son los datos ya validados, de data sacamos
-            username = data['username'] # 2- el dato username como username, para 
+            data = form.cleaned_data 
+            username = data['username'] 
             form.save()
-            return render(req, 'main.html', {'mensaje': f'Usuario {username} creado exitosamente'}) # 3- enviarlo en este mensaje
+            return render(req, 'main.html', {'mensaje': f'Usuario {username} creado exitosamente'})
         else:
             return render(req, 'register_view.html', {'form': form}) 
     else:
@@ -63,24 +104,24 @@ def register_view(req):
 
 # EDIT USER
 
-@login_required  # Solo los usuarios logueados pueden acceder a esta vista
+@login_required  
 def edit_user_view(req):
-    usuario = req.user  # El usuario que va a modificar sus datos
+    usuario = req.user  
 
     if req.method == 'POST':
-        form = UserEditForm(req.POST, instance=usuario)  # Instancia el formulario con los datos del usuario actual aparecen previamente escritos, ANTES UserChangeForm
+        form = UserEditForm(req.POST, instance=usuario)  
         if form.is_valid():
             data = form.cleaned_data
-            usuario.first_name = data['first_name'] # first_name es el nombre que va a llevar el campo, no se porque lo puso en ingles
+            usuario.first_name = data['first_name'] 
             usuario.last_name = data['last_name']
             usuario.email = data['email']
-            usuario.set_password(data['password1']) # set_password es un metodo para editar password asi que viene con la encriptacion todo
+            usuario.set_password(data['password1']) 
             usuario.save()
             return render(req, 'edit_user_view.html', {'mensaje': f'Datos ingresados'})
         else:
             return render(req, 'edit_user_view.html', {'form': form, 'mensaje': 'Ha ocurrido un error'})
     else:
-        form = UserEditForm(instance=req.user)  # Pasa los datos actuales del usuario al formulario
+        form = UserEditForm(instance=req.user)  
         return render(req, 'edit_user_view.html', {'form': form})
     
 
@@ -100,7 +141,7 @@ def add_avatar_view(req):
                     os.remove(avatar.imagen.path)
                 avatar.imagen = data['imagen']
             else:
-                avatar = Avatar(user=req.user, imagen=data['imagen'])  # Crear nuevo avatar
+                avatar = Avatar(user=req.user, imagen=data['imagen'])  
 
             avatar.save()
             return render(req, "main.html", {"mensaje": "Avatar actualizado"})

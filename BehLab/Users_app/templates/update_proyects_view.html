@@ -1,0 +1,14 @@
+{% extends 'main.html' %}
+
+{% block gap %}
+<br>
+<form action = "{% url 'update_proyects_view' proyect.id %}" method="post">{% csrf_token %} <!-- esto es el nombre name = url-->
+    <!-- Tenia un error que le pasaba como argumento estudiante.id, no lo necesitaba porque se va a crear uno nuevo-->
+
+    {{form.as_p}} <!-- Nombre por defecto del formulario de la view que crea django-->
+
+    <button type="submit">Actualizar</button>
+
+</form>
+    
+{% endblock gap %}

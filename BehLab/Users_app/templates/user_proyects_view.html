@@ -1,0 +1,28 @@
+{% extends 'main.html' %}
+
+{% block gap %}
+    <br>
+    <a class="btn btn-primary" href="{% url 'NewProyectForm_view' %}" style="margin-left: 20px;">Agregar proyecto</a>
+    <br>
+    <br>
+
+    <ul>
+        {% for proyect in proyects %}
+        <li>
+            <h4>{{ proyect.name_proyect }}</h2>
+                <div>
+                    <button>
+                     <a href="{% url 'delete_proyects_view' proyect.id %}">Eliminar</a>  <!-- Botn para eliminar no entendi porque eligio un ancord-->
+                    </button>
+                    <button>
+                     <a href="{% url 'update_proyects_view' proyect.id %}">Editar</a>  <!-- Botn para editar-->
+                     <button>
+                        <a href="{% url 'detail_proyects_view' proyect.id %}">Detalle</a>  <!-- Botn para editar-->
+                       </button>
+                    </button>
+                 </div>
+        </li>
+        {% endfor %}
+    </ul>
+
+{% endblock gap %}

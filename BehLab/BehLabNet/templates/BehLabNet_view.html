@@ -2,6 +2,18 @@
 {% block gap %}
 <br>
 <a class="btn btn-primary" href="{% url 'search_proyect_view' %}" style="margin-left: 20px;">Buscar proyecto</a>
-<a class="btn btn-primary" href="{% url 'NewProyectForm_view' %}" style="margin-left: 20px;">Agregar proyecto</a>
 <br>
+<br>
+    
+<ul>
+    {% for proyect in proyects %} 
+    <li>
+        <h5>{{ proyect.name_proyect }}</h4>
+        <h5>Usuario: {{ proyect.user.username }}</h5>
+        <h6>E-mail del usuario: {{ proyect.user.email }}</h5>
+        <p style="font-size: 18px;">Descripción: {{ proyect.brief_description }}</p>
+    </li>
+    {% endfor %}
+</ul>
+
 {% endblock gap %}

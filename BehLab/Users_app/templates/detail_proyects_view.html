@@ -1,0 +1,9 @@
+{% extends 'main.html' %}
+
+{% block gap %}
+<br>
+                <h2>Título del Proyecto: {{ proyect.name_proyect }}</h2>
+                <h3>Usuario: {{ proyect.user.username }}</h3>
+                <h3>Correo Electrónico: {{ proyect.user.email }}</h3>
+                <p>Descripción: {{ proyect.brief_description }}</p>
+{% endblock gap %}

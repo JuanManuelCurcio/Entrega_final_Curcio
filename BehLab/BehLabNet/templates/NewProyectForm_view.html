@@ -1,8 +1,9 @@
+{% extends 'main.html' %}
 
-
-
+{% block gap %}
 
 <form action="{% url 'NewProyectForm_view' %}" method="post"> {% csrf_token %} <!-- Token de seguridad que pide djaneiro -->
     <!-- ACA VA LA FUNCION -->
 {{form_new_proyect.as_p}}
 <button type="submit">Enviar</button>
+{% endblock gap %}

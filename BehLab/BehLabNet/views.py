@@ -6,10 +6,14 @@ from .models import Proyects
 
 # Create your views here.
 def BehLabNet_view(req):
-    if req.user.is_authenticated:
-        return render(req, "BehLabNet_view.html", {})
+    if req.user.is_authenticated: 
+        proyects = Proyects.objects.all()
+        return render(req, "BehLabNet_view.html", {
+            'proyects': proyects,  
+            'user_name': req.user.username  
+        })
     else:
-        return redirect('no_access_view')
+        return redirect('no_access_view')  
     
 # SEARCH PROYECT ######################################################################################################
 def search_proyect_view(req):
@@ -47,17 +51,17 @@ def result_proyect_view(req):
 # ADD PROYECT
 
 def NewProyectForm_view(req):
-    user = req.user  # Obtener el usuario autenticado
+    user = req.user  
 
     if req.method == 'POST':
         form_new_proyect = NewProyectForm(req.POST)
         
         if form_new_proyect.is_valid():  
             new_proyect = Proyects(
-                user=user,  # Asocia el proyecto al usuario autenticado
+                user=user,  
                 name_proyect=form_new_proyect.cleaned_data["name_proyect"],
                 brief_description=form_new_proyect.cleaned_data["brief_description"],
-                 key_words=form_new_proyect.cleaned_data["key_words"],
+                key_words=form_new_proyect.cleaned_data["key_words"],
             )
             new_proyect.save()  
             return render(req, "proyect_uploaded.html", {})  # Redirecciona tras guardado

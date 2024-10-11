@@ -7,7 +7,7 @@ class NewProyectForm(forms.ModelForm):
 
     class Meta:
         model = Proyects
-        fields = ['user','name_proyect', 'brief_description', 'key_words']  
+        fields = ['name_proyect', 'brief_description', 'key_words']  
         widgets = {
             'brief_description': forms.Textarea(attrs={'rows': 4, 'cols': 40}),
         }

@@ -8,9 +8,9 @@
     <ul>
         {% for proyect in proyects %}
             <li>
-                <h2>Título del Proyecto: {{ proyect.name_proyect }}</h2>
-                <h3>Usuario: {{ proyect.user.username }}</h3>
-                <h3>Correo Electrónico: {{ proyect.user.email }}</h3>
+                <h4>{{ proyect.name_proyect }}</h4>
+                <h5>Usuario: {{ proyect.user.username }}</h5>
+                <h5>Correo Electrónico: {{ proyect.user.email }}</h5>
                 <p>Descripción: {{ proyect.brief_description }}</p>
             </li>
         {% endfor %}
