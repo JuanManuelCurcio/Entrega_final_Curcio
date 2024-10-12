@@ -8,8 +8,7 @@
 <div class = "table">
     <h3>Matriz de correlaciones</h3>
     <table>
-    {{ mcorr|safe }}  <!-- Esto renderiza el contenido del DataFrame -->
-    </table>
+    {{ mcorr|safe }} 
 </div>
 <br>
 <a href="{% url 'load_csv_mcorr_view' %}" class="btn btn-primary">Cargar otro archivo</a>
@@ -19,7 +18,7 @@
   <h3>Data frame</h3>
   <div class = "table">
     <table>
-    {{ csv_file|safe }}  <!-- Esto renderiza el contenido del DataFrame -->
+    {{ csv_file|safe }}  
     </table>
   </div>
 {% endblock %}

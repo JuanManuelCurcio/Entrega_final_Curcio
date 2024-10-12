@@ -1,3 +1,10 @@
+# INSTALL
+# pip install seaborn
+# pip install matplotlib
+# pip install pandas
+# pip install statsmodels
+
+
 from django.shortcuts import render
 from django.shortcuts import redirect
 import pandas as pd
@@ -8,6 +15,9 @@ from .forms import csv_upload_form
 from io import TextIOWrapper # para manejar in-out: https://docs.python.org/es/3.10/library/io.html
 import seaborn as sns
 import matplotlib.pyplot as plt
+import statsmodels as sm
+from statsmodels.formula.api import ols
+from .forms import InputBoxplot
 
 
 # Create your views here.
@@ -63,3 +73,50 @@ def load_csv_mcorr_view(req):
         form = csv_upload_form()
 
     return render(req, 'load_csv_mcorr_view.html', {'form': form})
+
+
+# LOAD CSV FILE, boxplot
+
+def load_csv_boxplot_view(req):
+    if req.method == 'POST':
+        form = csv_upload_form(req.POST, req.FILES)
+        boxplot_form = InputBoxplot(req.POST)
+
+        if form.is_valid() and boxplot_form.is_valid():
+            x = boxplot_form.cleaned_data['x']  
+            y = boxplot_form.cleaned_data['y']
+            
+            csv_file = req.FILES['csv_file']
+            df = pd.read_csv(csv_file.file, sep=';', encoding='utf-8')
+
+            if x not in df.columns:
+                return render(req, 'load_csv_boxplot_view.html', {
+                    'form': form, 
+                    'boxplot_form': boxplot_form})
+            if y not in df.columns:
+                return render(req, 'load_csv_boxplot_view.html', {
+                    'form': form, 
+                    'boxplot_form': boxplot_form})
+
+            plt.figure(figsize=(10, 8))
+            sns.set_palette("magma")  # Establece la paleta de colores "magma"
+            graf = sns.boxplot(data=df, x=x, y=y, showfliers=True)
+            graf.set_xticklabels(graf.get_xticklabels(), rotation=0, fontsize=20)
+            graf.set_yticklabels(graf.get_yticklabels(), rotation=0, fontsize=20)
+            plt.legend(loc='upper left', frameon=False, labelspacing=1, prop={'size': 10})
+            plt.tick_params(axis='both', which='major', labelsize=12)
+            #plt.grid(axis='y', color='gray', linestyle='-', linewidth=0.5)
+            
+
+            plot_dir = os.path.join(settings.MEDIA_ROOT, 'plots')
+            image_path = os.path.join(plot_dir, 'boxplot.png')
+            plt.savefig(image_path)
+            plt.close()
+
+            return render(req, 'results_boxplot.html', {'graf': os.path.join(settings.MEDIA_URL, 'plots', 'boxplot.png'), 
+            'csv_file': df.to_html(index=False)})
+    else:
+        form = csv_upload_form()
+        boxplot_form = InputBoxplot()
+
+    return render(req, 'load_csv_boxplot_view.html', {'form': form, 'boxplot_form': boxplot_form})

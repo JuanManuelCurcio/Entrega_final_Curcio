@@ -1,0 +1,17 @@
+{% extends 'main.html' %}
+
+{% block gap %}
+<br>
+<h3>Box-plot</h3>
+    <img src="{{ graf }}" alt="Boxplot" style="width: 60%; height: auto;">
+<br>
+<a href="{% url 'load_csv_boxplot_view' %}" class="btn btn-primary">Cargar otro archivo</a>
+<a href="{% url 'BehLabTools_view' %}" class="btn btn-primary">Atras</a>
+<br>
+  <h3>Data frame</h3>
+  <div class = "table">
+    <table>
+    {{ csv_file|safe }}  
+    </table>
+  </div>
+{% endblock %}

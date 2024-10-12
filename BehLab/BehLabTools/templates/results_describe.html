@@ -4,7 +4,7 @@
   <h2>Resultado del Análisis</h2>
   <div class = "table">
     <table>
-    {{results|safe}} <!-- Permite que el contenido se renderice tal como esta sin ajuste html sino renderiza el codigo python -->
+    {{results|safe}} 
     </table>
     <br>
     <a href="{% url 'load_csv_describe_view' %}" class="btn btn-primary">Cargar otro archivo</a>
@@ -13,7 +13,7 @@
   <h2>Contenido Data Frame</h2>
   <div class = "table">
     <table>
-    {{ csv_file|safe }}  <!-- Esto renderiza el contenido del DataFrame -->
+    {{ csv_file|safe }}  
     </table>
   </div>
 {% endblock %}
