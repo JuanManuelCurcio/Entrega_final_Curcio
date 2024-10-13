@@ -32,3 +32,8 @@ class AvatarForm(forms.ModelForm):
     class Meta:
         model = Avatar
         fields = ['imagen']
+    def clean_imagen(self):
+        imagen = self.cleaned_data.get('imagen')
+        if not imagen:
+            raise forms.ValidationError("Debes seleccionar una imagen")
+        return imagen

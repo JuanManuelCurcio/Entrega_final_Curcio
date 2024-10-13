@@ -3,10 +3,11 @@
 {% block gap %}
 <br>
 
-<form action="{% url 'add_avatar_view' %}" enctype="multipart/form-data" method="post"> {% csrf_token %} <!-- PARA ENVIAR ARCHIVOS EL ENC-->
+<form action="{% url 'add_avatar_view' %}" enctype="multipart/form-data" method="post"> {% csrf_token %}
 
     {{form.as_p}}
-<button type="submit"> Cargar imagen </button>
+<button type="submit" class="btn btn-primary" > Cargar imagen </button>
+<a href="{% url 'user_panel_view' %}" class="btn btn-secondary" style="margin-left: 20px;">Cancelar</a>
 </form>
 
 

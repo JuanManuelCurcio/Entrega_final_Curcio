@@ -8,3 +8,6 @@ def index(req):
 
 def no_access_view(req):
     return render(req, "no_access_view.html", {})
+
+def about(req):
+    return render(req, "about.html", {})

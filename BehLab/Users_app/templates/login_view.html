@@ -3,13 +3,15 @@
 {% block gap %}
 <br>
 
-<form action="{% url 'login_view' %}" method="post"> {% csrf_token %} <!-- Token de seguridad que pide djaneiro -->
+<form action="{% url 'login_view' %}" method="post"> {% csrf_token %} 
 
     {{form.as_p}}
 
-    <button type = "submit"> Iniciar sesion </button>
+    <button type = "submit" class="btn btn-primary"> Iniciar sesion </button>
 
 </form>
+<br>
+<a href="{% url 'index' %}" class="btn btn-secondary">Cancelar</a>
 
 
 {% endblock gap %}

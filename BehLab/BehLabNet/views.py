@@ -64,7 +64,7 @@ def NewProyectForm_view(req):
                 key_words=form_new_proyect.cleaned_data["key_words"],
             )
             new_proyect.save()  
-            return render(req, "proyect_uploaded.html", {})  # Redirecciona tras guardado
+            return render(req, "proyect_uploaded.html", {}) 
     else:
         form_new_proyect = NewProyectForm(initial={'email': user.email})
 

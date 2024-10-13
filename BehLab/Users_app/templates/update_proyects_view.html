@@ -2,12 +2,13 @@
 
 {% block gap %}
 <br>
-<form action = "{% url 'update_proyects_view' proyect.id %}" method="post">{% csrf_token %} <!-- esto es el nombre name = url-->
-    <!-- Tenia un error que le pasaba como argumento estudiante.id, no lo necesitaba porque se va a crear uno nuevo-->
+<form action = "{% url 'update_proyects_view' proyect.id %}" method="post">{% csrf_token %} 
+    
 
-    {{form.as_p}} <!-- Nombre por defecto del formulario de la view que crea django-->
+    {{form.as_p}} 
 
-    <button type="submit">Actualizar</button>
+    <button type="submit" class="btn btn-primary">Actualizar</button>
+    <a href="{% url 'user_panel_view' %}" class="btn btn-secondary" style="margin-left: 10px;">Cancelar</a>
 
 </form>
     

@@ -44,7 +44,7 @@ class ProyectDetail(DetailView):
 
 class ProyectUpdate(UpdateView):
     model = Proyects
-    form_class = NewProyectForm  # Usa el formulario que definiste
+    form_class = NewProyectForm 
     template_name = 'update_proyects_view.html'
     success_url = '/users/user_proyects_view'
     context_object_name = 'proyect'
@@ -52,12 +52,15 @@ class ProyectUpdate(UpdateView):
 
 # NEW PROYECT (NewProyectForm_view) esta en la app BehLabNet, fue por un cambio de estrategia que hice luego sobre como crear los proyectos
 
+def success_view(req):
+    return render(req, "success_view.html", {})
+
 
 # LOG-IN
 
+    
 def login_view(req):
     form = AuthenticationForm(req, data=req.POST)
-    
 
     if req.method == 'POST':
         if form.is_valid():
@@ -99,7 +102,6 @@ def register_view(req):
     else:
         form = UserCreationForm()
         return render(req, 'register_view.html', {'form': form})
-    
 
 
 # EDIT USER
@@ -117,9 +119,9 @@ def edit_user_view(req):
             usuario.email = data['email']
             usuario.set_password(data['password1']) 
             usuario.save()
-            return render(req, 'edit_user_view.html', {'mensaje': f'Datos ingresados'})
+            return render(req, 'main.html', {'mensaje': f'Datos actualizados'})
         else:
-            return render(req, 'edit_user_view.html', {'form': form, 'mensaje': 'Ha ocurrido un error'})
+            return render(req, 'main.html', {'form': form, 'mensaje': 'Ha ocurrido un error'})
     else:
         form = UserEditForm(instance=req.user)  
         return render(req, 'edit_user_view.html', {'form': form})

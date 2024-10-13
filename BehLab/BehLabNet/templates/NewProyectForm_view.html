@@ -1,9 +1,10 @@
 {% extends 'main.html' %}
 
 {% block gap %}
-
-<form action="{% url 'NewProyectForm_view' %}" method="post"> {% csrf_token %} <!-- Token de seguridad que pide djaneiro -->
-    <!-- ACA VA LA FUNCION -->
+<br>
+<form action="{% url 'NewProyectForm_view' %}" method="post"> {% csrf_token %} 
+   
 {{form_new_proyect.as_p}}
-<button type="submit">Enviar</button>
+<button type="submit" class="btn btn-primary">Cargar</button>
+<a href="{% url 'BehLabNet_view' %}" class="btn btn-secondary">Cancelar</a>
 {% endblock gap %}

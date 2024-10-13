@@ -6,4 +6,7 @@
                 <h3>Usuario: {{ proyect.user.username }}</h3>
                 <h3>Correo Electrónico: {{ proyect.user.email }}</h3>
                 <p>Descripción: {{ proyect.brief_description }}</p>
+                <p>Palabras clave: {{ proyect.key_words }}</p>
+
+                <a href="{% url 'user_proyects_view' %}" class="btn btn-secondary">Atras</a>
 {% endblock gap %}

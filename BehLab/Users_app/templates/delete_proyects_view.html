@@ -3,10 +3,10 @@
 {% block gap %}
 <br>
 <form action="{% url 'delete_proyects_view' proyect.id %}" method="post"> 
-    {% csrf_token %} <!-- Token de seguridad que pide Django -->
+    {% csrf_token %}
 
-    <button type="submit">Estas seguro? ELIMINAR</button>
-    <a href="{% url 'user_proyects_view' %}" class="btn btn-secondary">Cancelar</a> <!-- Enlace a la vista de proyectos -->
+    <button type="submit" class="btn btn-danger" style="background-color: red; color: white;">¿Estás seguro? ELIMINAR</button>
+    <a href="{% url 'user_proyects_view' %}" class="btn btn-secondary">Cancelar</a>
 
 </form>
 {% endblock gap %}

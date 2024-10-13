@@ -19,16 +19,17 @@ from django.urls import path, include
 from .views import index
 from django.conf.urls.static import static
 from django.conf import settings
-from .views import no_access_view
+from .views import no_access_view, about
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('users/', include('Users_app.urls')),  # Incluye las URLs de Users_app
+    path('users/', include('Users_app.urls')),  
     path('BehLabTools/', include('BehLabTools.urls')),
     path('Forum/', include('Forum.urls')),
     path('BehLabNet/', include('BehLabNet.urls')),
     path('', index, name='index'),
-    path('no_access_view/', no_access_view, name='no_access_view')
+    path('no_access_view/', no_access_view, name='no_access_view'),
+    path('about/', about, name='about')
 ]
 
 #if settings.DEBUG:

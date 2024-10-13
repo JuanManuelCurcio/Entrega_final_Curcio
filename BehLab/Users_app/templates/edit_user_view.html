@@ -3,12 +3,12 @@
 {% block gap %}
 <br>
 
-<form action = "{% url 'edit_user_view' %}" method="post">{% csrf_token %} <!-- esto es el nombre name = url-->
+<form action = "{% url 'edit_user_view' %}" method="post">{% csrf_token %}
 
     {{form.as_p}}
 
     <button type="submit" class="btn btn-primary">Actualizar</button>
-    <a href="{% url 'index' %}" class="btn btn-primary">Volver al inicio</a>
+    <a href="{% url 'user_panel_view' %}" class="btn btn-secondary">Cancelar</a>
 </form>
-    
+
 {% endblock gap %}

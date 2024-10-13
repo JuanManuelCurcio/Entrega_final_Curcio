@@ -12,11 +12,8 @@ from django.shortcuts import render
 from BehLab import settings
 import os
 from .forms import csv_upload_form
-from io import TextIOWrapper # para manejar in-out: https://docs.python.org/es/3.10/library/io.html
 import seaborn as sns
 import matplotlib.pyplot as plt
-import statsmodels as sm
-from statsmodels.formula.api import ols
 from .forms import InputBoxplot
 
 
@@ -62,7 +59,7 @@ def load_csv_mcorr_view(req):
             graf = sns.heatmap(df.corr('pearson').round(2), annot=True, cmap='magma',annot_kws={"size": 20})
             graf.set_xticklabels(graf.get_xticklabels(), rotation=45, fontsize=14)
             graf.set_yticklabels(graf.get_yticklabels(), rotation=0, fontsize=14)
-            plot_dir = os.path.join(settings.MEDIA_ROOT, 'plots') # esto me conviene me parece rearlo en algun la do como fijo como el media root
+            plot_dir = os.path.join(settings.MEDIA_ROOT, 'plots')
             image_path = os.path.join(plot_dir, 'correlation_heatmap.png')
             plt.savefig(image_path)
             plt.close()
@@ -90,31 +87,29 @@ def load_csv_boxplot_view(req):
             df = pd.read_csv(csv_file.file, sep=';', encoding='utf-8')
 
             if x not in df.columns:
-                return render(req, 'load_csv_boxplot_view.html', {
-                    'form': form, 
-                    'boxplot_form': boxplot_form})
+                boxplot_form.add_error('x', f'La variable "{x}" no es una columna válida del data frame')
+            
             if y not in df.columns:
-                return render(req, 'load_csv_boxplot_view.html', {
-                    'form': form, 
-                    'boxplot_form': boxplot_form})
+                boxplot_form.add_error('y', f'La variable "{y}" no es una columna válida del data frame')
+
+            if boxplot_form.errors:
+                return render(req, 'load_csv_boxplot_view.html', {'form': form, 'boxplot_form': boxplot_form})
 
             plt.figure(figsize=(10, 8))
-            sns.set_palette("magma")  # Establece la paleta de colores "magma"
+            sns.set_palette("magma") 
             graf = sns.boxplot(data=df, x=x, y=y, showfliers=True)
             graf.set_xticklabels(graf.get_xticklabels(), rotation=0, fontsize=20)
             graf.set_yticklabels(graf.get_yticklabels(), rotation=0, fontsize=20)
             plt.legend(loc='upper left', frameon=False, labelspacing=1, prop={'size': 10})
             plt.tick_params(axis='both', which='major', labelsize=12)
-            #plt.grid(axis='y', color='gray', linestyle='-', linewidth=0.5)
-            
 
             plot_dir = os.path.join(settings.MEDIA_ROOT, 'plots')
             image_path = os.path.join(plot_dir, 'boxplot.png')
             plt.savefig(image_path)
             plt.close()
 
-            return render(req, 'results_boxplot.html', {'graf': os.path.join(settings.MEDIA_URL, 'plots', 'boxplot.png'), 
-            'csv_file': df.to_html(index=False)})
+            return render(req, 'results_boxplot.html', {'graf': os.path.join(settings.MEDIA_URL, 'plots', 'boxplot.png'), 'csv_file': df.to_html(index=False)})
+
     else:
         form = csv_upload_form()
         boxplot_form = InputBoxplot()

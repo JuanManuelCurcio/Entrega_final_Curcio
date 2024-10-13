@@ -6,75 +6,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>BeLab</title>
-    <!-- Favicon-->
+    <title>BehLab</title>
     <style>
         table {border-collapse: collapse; width: 40%; margin: 20px 0;justify-content: center;}
         th, td {border: 1px solid black;padding: 5px;text-align: center;}
-        th{background-color: #f2f2f2; font-weight: bold; text-align: center;padding: 5px;}
+        th {background-color: #f2f2f2; font-weight: bold; text-align: center;padding: 5px;}
     </style>
     <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
-    <!-- Core theme CSS (includes Bootstrap)-->
     <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
 </head>
 <body>
-    <!-- Responsive navbar-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container px-5">
             <a class="navbar-brand" href="{% url 'index' %}">Inicio</a>
-            <a class="navbar-brand" href="{% url 'forum_view_access' %}">Foro</a>
             <a class="navbar-brand" href="{% url 'BehLabNet_view' %}">BehLabNet</a>
             <a class="navbar-brand" href="{% url 'BehLabTools_view' %}">BehLabTools</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    
                     {% if user.is_authenticated %}
-                
-                    {% if user.avatar_set.first %}
-                    <p style="margin-right: 20px; color: #f2f2f2;">Bienvenido {{ user.username }}</p>
-                    <img src="{{ user.avatar_set.first.imagen.url }}" height="50px" alt="Avatar" style="margin-right: 60px;">
-                    
-                    <div style="clear: both;"></div>
-                    {% endif %}
-                    
-                    
-                    <form action="{% url 'logout_view' %}" method="post"> {% csrf_token %}
-                        <button type="submit" class="btn btn-primary">Cerrar sesión</button>
-                        <a class="btn btn-primary" href="{% url 'user_panel_view' %}">Panel de usuario</a>
-                        <a class="btn btn-primary" href="{% url 'add_avatar_view' %}">Agregar Avatar</a>
-                    </form>
-                
+                        {% if user.avatar_set.first %}
+                            <p style="margin-right: 20px; color: #f2f2f2;">Bienvenido {{ user.username }}</p>
+                            <img src="{{ user.avatar_set.first.imagen.url }}" height="50px" alt="Avatar" style="margin-right: 60px;">
+                        {% endif %}
+                        <form action="{% url 'logout_view' %}" method="post"> {% csrf_token %}
+                            <button type="submit" class="btn btn-primary">Cerrar sesión</button>
+                            <a class="btn btn-primary" href="{% url 'user_panel_view' %}">Panel de usuario</a>
+                        </form>
                     {% else %}
-                    <a class="btn btn-primary" href="{% url 'register_view' %}" style="margin-right: 10px;">Registrarse</a>
-                    <a class="btn btn-primary" href="{% url 'login_view' %}">Iniciar sesión</a>
+                        <a class="btn btn-primary" href="{% url 'register_view' %}" style="margin-right: 10px;">Registrarse</a>
+                        <a class="btn btn-primary" href="{% url 'login_view' %}">Iniciar sesión</a>
                     {% endif %}
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Page Content-->
     <div class="container" style="min-height: calc(110vh - 200px);">
         {% block gap %}
+            {% if mensaje %}
+            <br>
+            <div class="alert" style="background-color: #f8f9fa; color: black; border: 1px solid #dee2e6;">
+                    {{ mensaje }}
+                </div>
+            {% endif %}
         {% endblock gap %}
     </div>
-    
-    <!-- Footer-->
+
     <footer class="py-5 bg-dark">
         <div class="container px-4 px-lg-5">
-            <p class="m-0 text-center text-white">Copyright &copy; BehLab 2024</p>
+            <div class="d-flex justify-content-center align-items-center">
+                <p class="m-0 text-white">Copyright &copy; BehLab 2024</p>
+                <a class="m-0 text-white ms-3" href="{% url 'about' %}">About</a>
+            </div>
         </div>
     </footer>
 
-    <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Core theme JS-->
     <script src="{% static 'js/scripts.js' %}"></script>
 </body>
 </html>
-
-
-
-
-

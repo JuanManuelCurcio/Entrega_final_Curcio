@@ -2,12 +2,12 @@
 
 {% block gap %}
 <br>
-<div class="row gx-4 gx-lg-5"> <!-- aca la fila no te olvides!! -->
+<div class="row gx-4 gx-lg-5">
     <div class="col-md-4 mb-5">
         <div class="card h-100">
             <div class="card-body">
                 <h2 class="card-title">Describe</h2>
-                <p class="card-text">Obtenga el promedio, la desviación estándar, el mínimo y el máximo del total de su dataframe</p>
+                <p class="card-text">Obtenga el promedio, la desviación estándar, el mínimo y el máximo del total de sus datos</p>
             </div>
             <div class="card-footer">
                 <a class="btn btn-primary btn-sm" href="{% url 'load_csv_describe_view' %}">Entrar</a>
@@ -18,7 +18,7 @@
     <div class="col-md-4 mb-5">
         <div class="card h-100">
             <div class="card-body">
-                <h2 class="card-title">Matriz de correlacion</h2>
+                <h2 class="card-title">Matriz de correlación</h2>
                 <p class="card-text">Obtenga una matriz de correlaciones que le permite ver si las variables están relacionadas entre sí, proporciona un buen primer acercamiento a los datos</p>
             </div>
             <div class="card-footer">
@@ -31,7 +31,7 @@
         <div class="card h-100">
             <div class="card-body">
                 <h2 class="card-title">Box-plot</h2>
-                <p class="card-text">Obtenga un gráfico de cajas, permite ver la distribución de los valores del data frame. Ideal para acompañar al describe</p>
+                <p class="card-text">Obtenga un gráfico de cajas, permite ver la distribución de los valores del data frame. Ideal para acompañar al "describe"</p>
             </div>
             <div class="card-footer">
                 <a class="btn btn-primary btn-sm" href="{% url 'load_csv_boxplot_view' %}">Entrar</a>
