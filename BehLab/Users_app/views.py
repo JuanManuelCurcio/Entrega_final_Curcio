@@ -119,9 +119,9 @@ def edit_user_view(req):
             usuario.email = data['email']
             usuario.set_password(data['password1']) 
             usuario.save()
-            return render(req, 'main.html', {'mensaje': f'Datos actualizados'})
+            return render(req, 'alt_main_view.html', {'mensaje': f'Datos actualizados, por favor vuelva a inicio e inicie sesión nuevamente'})
         else:
-            return render(req, 'main.html', {'form': form, 'mensaje': 'Ha ocurrido un error'})
+            return render(req, 'alt_main_view.html', {'form': form, 'mensaje': 'Ha ocurrido un error'})
     else:
         form = UserEditForm(instance=req.user)  
         return render(req, 'edit_user_view.html', {'form': form})
