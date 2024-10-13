@@ -68,7 +68,4 @@ def NewProyectForm_view(req):
     else:
         form_new_proyect = NewProyectForm(initial={'email': user.email})
 
-    return render(req, "NewProyectForm_view.html", {
-        "form_new_proyect": form_new_proyect,
-        "user_name": user.username  
-    })
+    return render(req, "NewProyectForm_view.html", {"form_new_proyect": form_new_proyect,"user_name": user.username})

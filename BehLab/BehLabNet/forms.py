@@ -3,7 +3,7 @@ from .models import Proyects
 
 
 class NewProyectForm(forms.ModelForm):
-    email = forms.EmailField(label="Email del usuario") 
+    email = forms.EmailField(label="Email del usuario",required=False) 
 
     class Meta:
         model = Proyects
