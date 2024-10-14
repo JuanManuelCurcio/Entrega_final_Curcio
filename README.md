@@ -34,14 +34,15 @@ La idea original era que BehLabNet funcionara como un foro para implementar un C
 
 **Sobre BehLabTools**
 
-BehLabTools era la idea principal del proyecto, pero no parecía suficiente para cumplir con la tarea debido al requisito del CRUD, lo cual me llevó a implementar otras funcionalidades. En BehLabTools, logré combinar los conocimientos adquiridos tanto en el curso de Data Science como en el presente curso de desarrollo web.
+BehLabTools era la idea principal del proyecto, pero no parecía suficiente para cumplir con la tarea debido al requisito del CRUD, lo cual me llevó a implementar otras funcionalidades. En BehLabTools, logré combinar los conocimientos adquiridos tanto en el curso de Data Science como en el presente curso de desarrollo web. La idea es seguir implementando analisis para poder realizar.
+
 
 Consideraciones para el Uso de BehLabTools:
 
-Análisis de Boxplot: El análisis requiere que se ingresen las variables que serán evaluadas. Para probar la aplicación, abre el archivo CSV y revisa los nombres de las variables. Te recomiendo usar la variable "Category" en el eje X y cualquier otra en el eje Y para generar un gráfico estadísticamente coherente (aunque funcionará con otras variables).
+Análisis de Boxplot: El análisis requiere que se ingresen las variables que serán evaluadas. Para probar la aplicación, hay que abrir el archivo CSV y revisar los nombres de las variables. Recomiendo usar la variable "Category" en el eje X y cualquier otra en el eje Y para generar un gráfico estadísticamente coherente (aunque funcionará con otras variables).
 
 Describe: El análisis de "describe" es ideal para usar junto con el Boxplot, ya que los valores que ofrece "describe" corresponden a los generados por un Boxplot, salvo la media, ya que en el Boxplot la línea central suele representar la mediana.
 
-Vista del DataFrame: Sería ideal que el usuario pudiera ver el DataFrame antes de realizar los análisis, pero no llegue a implementarla.
+Vista del DataFrame: Sería ideal que el usuario pudiera ver el DataFrame antes de realizar los análisis, pero no llegue a implementar esa función.
 
 ¡Gracias por tomarte el tiempo de evaluar mi trabajo! Un saludo.
