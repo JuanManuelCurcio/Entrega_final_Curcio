@@ -30,11 +30,11 @@ Video de Demostración: https://drive.google.com/file/d/13S5lkIecMooT_R2Cj8xqUDe
 
 **Sobre BehLabNet**
 
-La idea original era que BehLabNet funcionara como un foro para implementar un CRUD, como pedía la tarea. Sin embargo, no logré desarrollarlo completamente debido a las limitaciones de la información que encontré en internet. Por ello, quedó una aplicación en el proyecto llamada "Forum", que no fue utilizada pero que me gustaría continuar desarrollando en el futuro.
+La idea original era crear un foro para cumplir con el CRUD que pedia la tarea. Sin embargo, no logré desarrollarlo completamente debido a las limitaciones de la información que encontré en internet. Por ello, quedó una aplicación en el proyecto llamada "Forum", que no fue utilizada pero que me gustaría continuar desarrollando en el futuro. BehLabNet surgio para poder implementar un CRUD y cumplir con la tarea.
 
 **Sobre BehLabTools**
 
-BehLabTools era la idea principal del proyecto, pero no parecía suficiente para cumplir con la tarea debido al requisito del CRUD, lo cual me llevó a implementar otras funcionalidades. En BehLabTools, logré combinar los conocimientos adquiridos tanto en el curso de Data Science como en el presente curso de desarrollo web. La idea es seguir implementando analisis para poder realizar.
+BehLabTools era la idea principal del proyecto, pero no parecía suficiente para cumplir con la tarea debido al requisito del CRUD. En BehLabTools, logré combinar los conocimientos adquiridos tanto en el curso de Data Science como en el presente curso de desarrollo web. La idea es seguir implementando analisis para poder realizar.
 
 
 Consideraciones para el Uso de BehLabTools:
