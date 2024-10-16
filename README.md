@@ -11,6 +11,7 @@ Función: Se encargó del 100% del desarrollo de la plataforma.
 Más Información: En la sección "About" de la plataforma.
 
 **IMPORTANTE:**
+
 Instalar las siguientes librerias para el correcto funcionamiento de la plataforma:
 
 seaborn
@@ -20,6 +21,7 @@ matplotlib
 pandas
 
 statsmodels
+
 
 Archivos Relevantes:
 
