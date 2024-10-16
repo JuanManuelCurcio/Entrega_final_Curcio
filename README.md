@@ -55,6 +55,6 @@ Análisis de Boxplot: El análisis requiere que se ingresen las variables que se
 
 Describe: El análisis de "describe" es ideal para usar junto con el Boxplot, ya que los valores que ofrece "describe" corresponden a los generados por un Boxplot, salvo la media, ya que en el Boxplot la línea central suele representar la mediana.
 
-Vista del DataFrame: Sería ideal que el usuario pudiera ver el DataFrame antes de realizar los análisis, pero no llegue a implementar esa función.
+Vista del DataFrame: Sería ideal que el usuario pudiera ver el DataFrame antes (y no despues) de realizar los análisis, pero no llegue a implementar esa función.
 
 ¡Gracias por tomarte el tiempo de evaluar mi trabajo! Un saludo.
